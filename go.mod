@@ -1,4 +1,4 @@
-module example/finance-tracker-api
+module github.com/tierthree/go-finance
 
 go 1.18
 
