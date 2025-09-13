@@ -1,8 +1,6 @@
 package routes
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"github.com/tierthree/go-finance/internal/api/handlers"
 )
