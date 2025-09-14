@@ -1,2 +1,5 @@
+fmt:
+	gofmt -l -s -w .
+
 build:
-	go build ./cmd/app
+	cd go-src/cmd && go build -o ../../app .

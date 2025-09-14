@@ -9,4 +9,5 @@ func BudgetRouter(router *gin.RouterGroup) {
 	budget := router.Group("/budget")
 
 	budget.GET("/list", handlers.ListBudgets)
+	budget.POST("/create", handlers.CreateBudgets)
 }
