@@ -1,10 +1,10 @@
 package db
 
 import (
-	"os"
 	"context"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/jackc/pgx/v5"
 )
@@ -82,7 +82,7 @@ func Update(table string, updatedValue string, nameToUpdate string) error {
 	return nil
 }
 
-func Read(table string, field string, filter string) (pgx.Row, error) {
+func ReadSingleRow(table string, field string, filter string) (pgx.Row, error) {
 	conn, err := Connect()
 	if err != nil {
 		return nil, fmt.Errorf("Database error: %w", err)
@@ -93,4 +93,21 @@ func Read(table string, field string, filter string) (pgx.Row, error) {
 	sql := fmt.Sprintf("SELECT %s FROM %s WHERE %s", field, table, filter)
 
 	return conn.QueryRow(context.Background(), sql), nil
+}
+
+func ReadMultipleRows(table string, field string) (pgx.Rows, error) {
+	conn, err := Connect()
+	if err != nil {
+		return nil, fmt.Errorf("Database error: %w", err)
+	}
+
+	defer conn.Close(context.Background())
+
+	sql := fmt.Sprintf("SELECT %s FROM %s", field, table)
+
+	fmt.Println(sql)
+
+	rows, err := conn.Query(context.Background(), sql)
+
+	return rows, err
 }

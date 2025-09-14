@@ -8,6 +8,8 @@ import (
 func AccountRouter(router *gin.RouterGroup) {
 	account := router.Group("/account")
 
-	account.GET("/list", handlers.ListAccounts)
-	account.POST("/create", handlers.CreateAccounts)
+	account.GET("/list", handlers.ListAccount)
+	account.POST("/create", handlers.CreateAccount)
+	account.POST("/delete", handlers.DeleteAccount)
+	account.POST("/update", handlers.UpdateAccount)
 }
