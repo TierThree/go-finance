@@ -8,5 +8,6 @@ import (
 func TransactionRouter(router *gin.RouterGroup) {
 	transaction := router.Group("/transaction")
 
-	transaction.GET("/list", handlers.ListTransactions)
+	transaction.GET("/list", handlers.ListTransaction)
+	transaction.POST("/create", handlers.CreateTransaction)
 }
